@@ -4,16 +4,15 @@
  *main - print all combinations of three different digits
  *Return: Always 0 (Success)
  */
-
 int main(void)
 {
 	int x, y, z;
 
 	for (x = 0; x <= 9; x++) /*hundreds place*/
 	{
-		for (y = (x + 1); j <= '9'; j++) /*tens=100s+1*/
+		for (y = (x + 1); y <= '9'; y++) /*tens=100s+1*/
 		{
-			for (j = (y + 1); x <= '9';x++) /*ones*/
+			for (z = (y + 1); z <= '9';z++) /*ones*/
 			{
 				putchar(x + '0');
 				putchar(y + '0');
