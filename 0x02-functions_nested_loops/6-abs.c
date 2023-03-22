@@ -1,17 +1,19 @@
 #include "main.h"
-/*
- * main -computes the absolute value of an integer.
- * Return: 0
+/**
+ * _abs - function computes the absolute value of an integer.
+ * @i: function parameter
+ * Return: Always 0
  *
  */
-int _abs(int)
+int _abs(int i)
 {
-	if (i >= 0)
+	if (i < 0)
 	{
-		return (1);
+		i = -(i);
 	}
-	else
+	else if (i >= 0)
 	{
-		return (i * -1);
+		i = i;
 	}
+	return (i);
 }
