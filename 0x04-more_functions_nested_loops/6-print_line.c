@@ -5,12 +5,11 @@
  * Return: void
  */
 
-void print_line(int n);
+void print_line(int n)
 {
 	int i;
 
-	for (i = 1, i <= n, i++)
-		_putchar('_');
-	else
-		_putchar('\n');
+	for (i = 1; i <= n; i++)
+	_putchar('_');
+	_putchar('\n');
 }
