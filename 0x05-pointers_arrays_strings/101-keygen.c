@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char password[13];
+	char password[14];
 	int i, random_num;
 
 	srand(time(NULL));
@@ -23,7 +23,7 @@ int main(void)
         else
             password[i] = '0' + (random_num - 52);
 	}
-    password[12] = '\0';
+    password[13] = '\0';
 
     printf("Password: %s\n", password);
 
