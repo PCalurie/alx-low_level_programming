@@ -15,7 +15,7 @@ char *_strcat(char *dest, char *src)
 	while (dest[dlen])/*counting the no. of strings and storing in dlen*/
 		dlen++;
 
-	for (i = 0; i != 0; i++)/*appending each character and updating dlen*/
+	for (i = 0; src[i] != 0; i++)/*appending each character and updating dlen*/
 	{
 		dest[dlen] = src[i];
 		dlen++;
