@@ -13,27 +13,25 @@ void print_buffer(char *b, int size)
 	int i, j;
 
 	if (size <= 0)
-	{
 		printf("\n")
-		return;
-	}
-
-	for (i = 0; i <= size; i += 10)
+	else
 	{
+		for (i = 0; i <= size; i += 10)
+		{
 /* print the address of the current line*/
-		prinf("%.8x:", i);
+			prinf("%.8x:", i);
 
 /* print the hexadecimal representation of the bytes */
-		for (j = i; j < i + 10; j++)
-		{
+			for (j = i; j < i + 10; j++)
+			{
 			if (j % 2 == 0)
 				pfintf(" ");
 
-		if (j < size)
-			printf("%.2x", *(b + j));
-		else
-			printf(" ");
-
+			if (j < size)
+				printf("%.2x", *(b + j));
+			else
+				printf(" ");
+			}
 /*print the ASCII representation of the bytes */
 		for (j = i; j < i + 10; j++)
 		{
