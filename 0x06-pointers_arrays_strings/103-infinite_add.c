@@ -34,7 +34,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		add /= 10;/* calculate the carry to be added in the next iteration */
 	}
 	r[i] = '\0';/* terminate the result string */
-/* if digits still in input arrays or return 0 */
+/* if there are still digits in input arrays return 0 */
 	if (len1 >= 0 || len2 >= 0 || add)
 		return (0);
 	for (i--, j = 0; i > j; i--, j++)/* reverse the result array */
