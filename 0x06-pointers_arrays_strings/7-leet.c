@@ -8,7 +8,7 @@
 char *leet(char *s)
 {
 	char *p = s;
-	char *r = "AEOtl";
+	char *r = "AEOTL";
 	char *n = "43071";
 
 	while (*p)
@@ -25,5 +25,6 @@ char *leet(char *s)
 		}
 		p++;
 	}
+
 	return (s);
 }
