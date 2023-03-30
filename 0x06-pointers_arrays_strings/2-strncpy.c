@@ -8,19 +8,12 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int index = 0;
-	int src_len = 0;
+	int i;
 
-	while (src[index])/*copy characters from source increamenting index*/
-		src_len++;
-
-	for (index = 0; index < n && src[index]; index++)/*copy src to dest*/
-	{
-		dest[index] = src[index];
-	}
-
-	for (index = src_len; index < n; index++)/*fill null-terminator*/
-		dest[index] = '\n';
+	for (i = 0; i < n && src[i] != 0; i++)
+		dest[i] = src[i];
+	for (; i < n; i++)
+		dest[i] = '\0';
 
 	return (dest);
 }
