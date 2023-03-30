@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * print_buffer - prints a buffer in a pretty formmat
  * @b: pointer to the buffer to print
