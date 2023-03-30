@@ -8,7 +8,7 @@
 
 char *rot13(char *s)
 {
-	char rot, r = s;
+	char rot, *r = s;
 /* iterate through the string */
 	while (*s)
 	{
