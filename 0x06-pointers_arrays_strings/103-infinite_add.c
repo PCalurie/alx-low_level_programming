@@ -28,26 +28,20 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			add += n1[len1] - '0';
 		if (len2 >= 0)
 			add += n2[len2] - '0';
-/* if there are no more digits to add and carry is 0, exit loop */
-		if (len1 < 0 && len2 < 0 && add == 0)
+		if (len1 < 0 && len2 < 0 && add == 0)/* if no more digits to add exit loop */
 			break;
-/* store the sum in the result array */
-		r[i] = add % 10 + '0';
-/* calculate the carry to be added in the next iteration */
-		add /= 10;
+		r[i] = add % 10 + '0';/* store the sum in the result array */
+		add /= 10;/* calculate the carry to be added in the next iteration */
 	}
-/* terminate the result string */
-	r[i] = '\0';
+	r[i] = '\0';/* terminate the result string */
 /* if digits still in input arrays or return 0 */
 	if (len1 >= 0 || len2 >= 0 || add)
 		return (0);
-/* reverse the result array */
-	for (i--, j = 0; i > j; i--, j++)
+	for (i--, j = 0; i > j; i--, j++)/* reverse the result array */
 	{
 		add = r[i];
 		r[i] = r[j];
 		r[j] = add;
 	}
-/* return the result */
 	return (r);
 }
