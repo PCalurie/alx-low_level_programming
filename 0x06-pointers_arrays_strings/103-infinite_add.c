@@ -18,7 +18,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		;
 
 /* if the result string is less than sum size, return 0 */
-	if(len1 > size_r || len2 > size_r)
+	if (len1 > size_r || len2 > size_r)
 		return (0);
 
 /* decreament the length and size counter as they are 1-indexed */
