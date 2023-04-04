@@ -13,12 +13,12 @@ void print_chessboard(char (*a)[8])
 /* print each character in the row */
 		while (j < 8)
 		{
-			_putchar(a[i][j];)
+			_putchar(a[i][j]);
 				j++;
 		}
 /* move to the next row and print a newline character */
 		i++;
-		_putcha('\n');
+		_putchar('\n');
 
 	} while (i < 8);
 }
