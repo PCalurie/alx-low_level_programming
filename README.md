@@ -1,2 +1,1 @@
-#!/bin/bash
-C Structure
+# C Structures

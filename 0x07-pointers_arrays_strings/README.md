@@ -7,3 +7,4 @@
 5. The **"_strstr"** function is used to locate a substring in the first string  it appears in a buffer.
 7. The **"print_chessboard"** prints out a 2D chessboard with a given input.
 8. The **"print_diagsums"** prints the sum of the diagonals of  a square matrix of integers.
+9. The **"set_string"** sets the value of a pointer to a char.
