@@ -5,3 +5,4 @@
 3. The **"_strspn"** function is used to get the length of a prefix substring by comparing if characters in s matches with the characters in accept.
 4. The **"_strpbrk"** function is used to search in a string for any set of bytes.
 5. The **"_strstr"** function is used to locate a substring in the first string  it appears in a buffer.
+7. The **"print_chessboard"** prints out a 2D chessboard with a given input.
