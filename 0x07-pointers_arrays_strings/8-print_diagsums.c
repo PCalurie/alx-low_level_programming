@@ -7,13 +7,13 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i = 0, sum1 = 0, sum2 = 0;
+	int i, sum0 = 0, sum1 = 0;
 
-	do {
-		sum1 += a[i]; /*sum of elements of diagonal 1 */
-		sum2 += a[size - 1 + i]; /* sum of diagonal 2 */
-		i += size + 1; /* moves to the next element of diagonal 1 */
-	} while (i < size * size);
+	for (i = 0; i < size; i++)
+	{
+		sum0 += a[(size + 1) * i];
+		sum1 += a[(size - 1) * (i + 1)];
+	}
 
-	printf("%d, %d\n", sum1, sum2);
+	printf("%d, %d\n", sum0, sum1);
 }
