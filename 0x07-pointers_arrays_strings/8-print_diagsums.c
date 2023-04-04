@@ -15,5 +15,5 @@ void print_diagsums(int *a, int size)
 		i += size + 1; /* moves to the next element of diagonal 1 */
 	} while (i < size * size);
 
-	printf("%d, %d\n, sum1, sum2);
+	printf("%d, %d\n", sum1, sum2);
 }
