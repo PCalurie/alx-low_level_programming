@@ -6,10 +6,10 @@
 
 void _print_rev_recursion(char *s)
 {
-	if (*s == '\0')
+	if (*s == '\0') /* function returns when pointer is at null char */
 		return;
 
-	s++;
-	_print_rev_recursion(s);
-	_putchar(*s);
+	s++; /* increaments the pointer to the next character */
+	_print_rev_recursion(s); /* calls the pointer recursively */
+	_putchar(*s); /* prints the string in reverse as called */
 }

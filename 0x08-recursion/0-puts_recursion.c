@@ -6,13 +6,13 @@
 
 void  _puts_recursion(char *s)
 {
-	if (*s == '\0')
+	if (*s == '\0') /* checks if the pointer is at null char */
 	{
-		_putchar('\n');
+		_putchar('\n'); /* then adds a new line */
 		return;
 	}
 
-	_putchar(*s);
-	s++;
-	_puts_recursion(s);
+	_putchar(*s); /* pointer is called with the current char */
+	s++; /* increaments pointer with next value of char */
+	_puts_recursion(s); /* prints the recursed string on terminal */
 }
