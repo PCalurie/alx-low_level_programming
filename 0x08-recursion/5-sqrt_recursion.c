@@ -6,9 +6,9 @@
  * @a: guessed number
  * Return: sqrt of x or else -1 for error
  */
-int sqrtaid(int, int);
+int sqrtaid(int x, int a);
 /**
- * sqrt_recursion - prints the natural square root of a number
+ * _sqrt_recursion - prints the natural square root of a number
  * @x: number to calculate its natural square root
  * Return: sqrt of x or else -1 for error
  */
@@ -22,7 +22,13 @@ int _sqrt_recursion(int x)
 /* calculates the sqrt of the guessed no. recursively */
 	return (sqrtaid(x, 1));
 }
-
+/**
+ * sqrtaid - calculates recursively the  natural square root
+ * @x: number to check
+ * @a: number to guess
+ *
+ * Return: sqrt of x or else -1 for errors
+ */
 int sqrtaid(int x, int a)
 {
 	if (a * a == x) /* if the guess is = to num print th gues */
