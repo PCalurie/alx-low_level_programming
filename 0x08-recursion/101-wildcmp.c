@@ -23,7 +23,7 @@ int wildcmp(char *s1, char *s2)
 		if (wildcmp(s1, s2 + 1))
 		return (1);
 /* compare the rest f s1 starting with the next char with the rest of s2 */
-		if (*s1 != '\0' && wildcmp(s2 + 1, s2))
+		if (*s1 != '\0' && wildcmp(s1 + 1, s2))
 		return (1);
 	}
 
