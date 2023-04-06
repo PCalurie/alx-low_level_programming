@@ -10,6 +10,7 @@ void _print_rev_recursion(char *s)
 		return;
 
 	s++; /* increaments the pointer to the next character */
-	_print_rev_recursion(s); /* calls the pointer recursively */
+	_print_rev_recursion(s); /* function calls itself with new pointer value */
+	s--; /* the pointer is decreamented to read the previous char */
 	_putchar(*s); /* prints the string in reverse as called */
 }
