@@ -5,3 +5,4 @@
 3. The **"factorial"** function calculates the factorial of a given number giving an error if a num is -ve.
 4. The **_pow_recursion""** function calculates the power of a given no. recurssively and the code is more precise and saves space required to save intermediate values.
 5. The **"_sqrt_recursion"** function calculates the natural number of a positive int while **"sqrtaid"** recursively calculates the natural square root of a given number.
+6. The **"is_prime_number"** function checks whether the number is a prime number using the Trial Division Method: Divide the number by all numbers from 2 to the square root of the number. If none of these divisions have a remainder of 0, then the number is prime.

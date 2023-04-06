@@ -9,4 +9,7 @@ int _pow_recursion(int a, int b);
 int _sqrt_recursion(int x);
 int sqrtaid(int x, int a);
 int is_prime_number(int n);
+int is_palindrome(char *s);
+int wldcmp(char *s1, char *s2);
+
 #endif
