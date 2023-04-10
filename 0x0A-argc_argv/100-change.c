@@ -23,7 +23,7 @@ int (int argc, char *argv[])
 		return (0);
 	}
 /* define an array of coin values */
-	int coins[] = {25, 10, 5, 2, 1}
+	int coins[] = {25, 10, 5, 2, 1};
 /* initialize a counter for the num of coins used */
 	int num_coins = 0;
 /* iterate over the num of coins used */
