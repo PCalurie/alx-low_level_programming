@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 		{
 			if (!isdigit(*n))
 			{
-				printf("Error\n")
+				printf("Error\n");
 				return (1);
 			}
 			n++;
