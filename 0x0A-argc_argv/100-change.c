@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 /* iterate over the num of coins used */
-	for ( x = 0; x < 5; x++)
+	for (x = 0; x < 5; x++)
 	{
 		count = coins[x];
 		num_coins += cents / count;
