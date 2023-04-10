@@ -10,12 +10,12 @@
 unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int length = 0;
-	int m, n;
+	int m, n = 0;
 /* for each char in 's' */
-	for (m = 0; s[m]; m++)
+	for (m = 0; s[m] != '\0'; m++)
 	{
 /* for each char in accept */
-		for (n = 0; accept[n]; n++)
+		for (n = 0; accept[n] != '\0'; n++)
 		{
 /* if the current char in accept matches char in s */
 			if (s[m] == accept[n])
@@ -23,11 +23,11 @@ unsigned int _strspn(char *s, char *accept)
 				length++; /* increament length */
 				break; /* break from inner loop */
 			}
-/* if we reach the end of string accept with no match */
-			else if (accept[n + 1] == '\0')
-			{
-				return (length);
-			}
 		}
+/* if we reach the end of string accept with no match */
+	if (accept[n + 1] == '\0')
+		break;
 	}
+
+	return (length);
 }
