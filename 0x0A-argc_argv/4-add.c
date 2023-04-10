@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int x, num, sum;
+	int x, num, sum = 0;
 
 	for (x = 1; x < argc; x++)
 	{
