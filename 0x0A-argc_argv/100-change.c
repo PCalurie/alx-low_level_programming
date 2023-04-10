@@ -18,7 +18,7 @@ int (int argc, char *argv[])
 		return (1);
 	}
 /* convert the argument into an int */
-	int amnt = atoi(argv[1]);
+	amnt = atoi(argv[1]);
 /* check that the amnt is positive */
 	if (amnt < 0)
 	{
