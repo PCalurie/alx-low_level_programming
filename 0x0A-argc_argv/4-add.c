@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
 	int x, num, sum;
 
-	for (x = 0; x < argc; x++)
+	for (x = 1; x < argc; x++)
 	{
 		char *n = argv[x];
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
 		if (num > 0)
 		{
-			sum = num + num;
+			sum += num;
 		}
 	}
 
