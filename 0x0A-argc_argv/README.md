@@ -4,4 +4,4 @@
 2. Prints all the arguments. 
 3. A multiplication programme.
 4. An addition programme.
-5. Minimal number of coins to return for a given amnt of money.
+5. Minimal number of coins to return as change for a given amnt of money.
