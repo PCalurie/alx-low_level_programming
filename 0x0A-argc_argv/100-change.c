@@ -8,6 +8,9 @@
  */
 int (int argc, char *argv[])
 {
+	int amnt;
+	int coins [] = {25, 10, 5, 2, 1};
+	int num_coins, count, x;
 /* check that there is only one argument including the name of prg */
 	if (argc != 2)
 	{
@@ -21,14 +24,10 @@ int (int argc, char *argv[])
 	{
 		printf("0\n");
 		return (0);
-	}
-/* define an array of coin values */
-	int coins[] = {25, 10, 5, 2, 1};
 /* initialize a counter for the num of coins used */
-	int num_coins = sizeof(coins) / sizeof(coins[x]);
-	int count = 0;
+	num_coins = sizeof(coins) / sizeof(coins[0]);
+	count = 0;
 /* iterate over the num of coins used */
-	int x;
 
 	for (x = 0; x < 5; x++)
 	{
