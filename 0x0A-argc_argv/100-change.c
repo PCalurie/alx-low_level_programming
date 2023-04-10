@@ -25,7 +25,8 @@ int (int argc, char *argv[])
 /* define an array of coin values */
 	int coins[] = {25, 10, 5, 2, 1};
 /* initialize a counter for the num of coins used */
-	int num_coins = 0;
+	int num_coins = sizeof(coins) / sizeof(coins[x]);
+	int count = 0;
 /* iterate over the num of coins used */
 	int x;
 
@@ -35,11 +36,11 @@ int (int argc, char *argv[])
 		{
 /* substract the coin value from the amnt and increament the counter */
 			amnt -= coins[x];
-		num_coins++;
+		count++;
 		}
 	}
 
-	printf("%d\n", num_coins);
+	printf("%d\n", count);
 
 	return (0);
 }
