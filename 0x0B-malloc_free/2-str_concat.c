@@ -27,6 +27,12 @@ char *str_concat(char *s1, char *s2)
 	c = a + b;
 	str = malloc((sizeof(char) * c) + 1);
 
+	if (str == NULL)
+	{
+		fprintf(stderr, "Error malloc failed\n");
+		return (NULL);
+	}
+
 	for (d = 0; d < c; d++)
 	{
 		if (d <= a)
