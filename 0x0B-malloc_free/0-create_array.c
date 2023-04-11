@@ -23,10 +23,10 @@ char *create_array(unsigned int size, char c)
 		return (NULL);
 /* fill the array with the given char */
 	for (i = 0; i < size; i++)
-		*s[i] = c;
+		*(s + i) = c;
 
 /* add a null terminator at the end of the array */
-	*s[i] = '\0';
+	*(s + i) = '\0';
 
 	return (s);
 }
