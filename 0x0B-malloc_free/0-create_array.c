@@ -13,20 +13,20 @@ char *create_array(unsigned int size, char c)
 	unsigned int i;
 	char *s;
 /* check for invalid size */
-	if (size < 0)
+	if (size <= 0)
 		return (NULL);
 
 /* allocate memory for the array */
 	s = malloc(size * sizeof(char));
 /* check if allocation was successful */
-	if (s == '\0')
+	if (s == 0)
 		return (NULL);
 /* fill the array with the given char */
 	for (i = 0; i < size; i++)
-		s[i] = c
+		*s[i] = c;
 
 /* add a null terminator at the end of the array */
-	s[i] = '\0';
+	*s[i] = '\0';
 
 	return (s);
 }
