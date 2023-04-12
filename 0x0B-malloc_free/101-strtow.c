@@ -6,7 +6,7 @@
 int word_len(char *str);
 int count_words(char *str);
 
-int idx, words, letters, w, l;
+int idx, words, lt = 0, w, l;
 /**
  * word_len - finds the first word of the string
  * @str: the string to check in
@@ -74,10 +74,12 @@ char **strtow(char *str)
 		while ((str[idx] == ' '))
 			idx++;
 
-		for (letters = 0; *(str + idx + letters) != ' ' && *(str + idx + letters) != '\0'; letters++)
-				;
+		while (*(str + idx + lt) != ' ' && *(str + idx + lt) != '\0')
+		{
+			lt++;
+		}
 /* allocate memory for the current word */
-		strings[w] = malloc(sizeof(char) * (letters + 1));
+		strings[w] = malloc(sizeof(char) * (lt + 1));
 
 		if (strings[w] == NULL)
 		{
@@ -88,7 +90,7 @@ char **strtow(char *str)
 			return (NULL);
 		}
 /* copy current words into array */
-		for (l = 0; l < letters; l++)
+		for (l = 0; l < lt; l++)
 			strings[w][l] = *(str + idx++);
 
 		strings[w][l] = '\0';
