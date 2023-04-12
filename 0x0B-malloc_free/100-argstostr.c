@@ -30,7 +30,7 @@ char *argstostr(int ac, char **av)
 /* copy the argument to the new str */
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; av[i][j] != '\0')
+		for (j = 0; av[i][j] != '\0'; j++)
 		{
 			str[n] = av[i][j];
 			n++;
