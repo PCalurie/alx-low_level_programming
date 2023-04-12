@@ -38,10 +38,9 @@ int count_words(char *str)
 
 	for (index = 0; index < len; index++)
 	{
-		if (*(str + index) != ' ')
+		if (*(str + index) != ' ' && (index == 0 || str[index - 1] == ' '))
 		{
 			words++;
-			index += word_len(str + index);
 		}
 	}
 
@@ -72,11 +71,11 @@ char **strtow(char *str)
 /* loop through string and count words */
 	for (w = 0, (idx = 0); w < words; w++)
 	{
-		while ((str[idx] = ' '))
+		while ((str[idx] == ' '))
 			idx++;
 
-		letters = word_len(str + idx);
-
+		for (letters = 0; *(str + idx + letters) != ' ' && *(str + idx + letters) != '\0'; letters++)
+				;
 /* allocate memory for the current word */
 		strings[w] = malloc(sizeof(char) * (letters + 1));
 
@@ -90,7 +89,7 @@ char **strtow(char *str)
 		}
 /* copy current words into array */
 		for (l = 0; l < letters; l++)
-			strings[w][l] = str[idx++];
+			strings[w][l] = *(str + idx++);
 
 		strings[w][l] = '\0';
 	}
