@@ -74,14 +74,8 @@ char **strtow(char *str)
 		while ((str[idx] == ' '))
 			idx++;
 
-		while (*(str + idx + lt) != ' ' && *(str + idx + lt) != '\0')
-		{
-			lt++;
-			if (*(str + idx + lt) != ' ' && *(str + idx + lt) != '\0')
-			{
-				break;
-			}
-		}
+		for (; *(str + idx + lt) != ' ' && *(str + idx + lt) != '\0'; lt++)
+			;
 /* allocate memory for the current word */
 		strings[w] = malloc(sizeof(char) * (lt + 1));
 
