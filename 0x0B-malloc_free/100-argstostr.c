@@ -8,7 +8,7 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int i, j, len = 0, n = 0;
+	int i, j, n = 0;
 	char *str;
 
 	if (ac == 0 || av == NULL)
@@ -19,12 +19,12 @@ char *argstostr(int ac, char **av)
 	{
 		for (j = 0; av[i][j] != '\0'; j++)
 		{
-			len++;
-		len++; /* for the new line */
+			n++;
+		n++; /* for the new line */
 		}
 	}
 /* allocate mem for the new char */
-	str = malloc(sizeof(char) * (len + 1));
+	str = malloc(sizeof(char) * (n + 1));
 	if (str == NULL)
 		return (NULL);
 /* copy the argument to the new str */
@@ -32,11 +32,9 @@ char *argstostr(int ac, char **av)
 	{
 		for (j = 0; av[i][j] != '\0'; j++)
 		{
-			str[n] = av[i][j];
-			n++;
+			str[n++] = av[i][j];
 		}
-		str[n] = '\n'; /* add new line */
-		n++;
+		str[n++] = '\n'; /* add new line */
 	}
 	str[n] = '\0'; /* add null terminator */
 
