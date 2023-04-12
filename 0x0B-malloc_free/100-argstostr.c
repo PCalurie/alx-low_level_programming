@@ -35,11 +35,8 @@ char *argstostr(int ac, char **av)
 			str[n] = av[i][j];
 			n++;
 		}
-		if (i < ac - 1)
-		{
-			str[n] = '\n'; /* add new line */
-			n++;
-		}
+		str[n] = '\n'; /* add new line */
+		n++;
 	}
 	str[n] = '\0'; /* add null terminator */
 
