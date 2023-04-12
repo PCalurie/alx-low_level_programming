@@ -20,8 +20,8 @@ char *argstostr(int ac, char **av)
 		for (j = 0; av[i][j] != '\0'; j++)
 		{
 			len++;
-		len++; /* for the new line */
 		}
+		len++; /* for the new line */
 	}
 /* allocate mem for the new char */
 	str = malloc((sizeof(char) * len) +  ac + 1);
