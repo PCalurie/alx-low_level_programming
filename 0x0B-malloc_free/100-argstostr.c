@@ -35,10 +35,10 @@ char *argstostr(int ac, char **av)
 			str[n] = av[i][j];
 			n++;
 		}
-		str[n] = '\n' /* add new line */
+		str[n] = '\n'; /* add new line */
 		n++;
 	}
-	str[n] = '\0' /* add null terminator */
-	
+	str[n] = '\0'; /* add null terminator */
+
 	return (str);
 }
