@@ -24,7 +24,7 @@ char *argstostr(int ac, char **av)
 		len++; /* for the new line */
 	}
 /* allocate mem for the new char */
-	str = malloc((sizeof(char) * len) +  ac);
+	str = malloc((sizeof(char) * len) +  ac - 8);
 	if (str == NULL)
 		return (NULL);
 /* copy the argument to the new str */
