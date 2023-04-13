@@ -3,4 +3,5 @@
 2. **"_strdup"** returns a pointer to a newly allocated space in memory which contains a copy of the string given as a parameter.
 3. **"_strcocat"** concatenates two strings into one.
 4. **"alloc_grid"** prints a 2D grid of integers.
-5. **"argstostr"** concatenates all arguments passed.
+5. **"argstostr"** concatenates all arguments passed in your programme.
+6. **"strtow"** splits a string in your programme into words.
