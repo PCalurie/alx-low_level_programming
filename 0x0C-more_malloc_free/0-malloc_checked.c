@@ -8,13 +8,12 @@
  */
 void *malloc_checked(unsigned int b)
 {
-	void *p;
+	void *pt;
 
-	p = malloc(b);
-	if (!p)
+	pt = malloc(b);
+	if (pt == NULL)
 	{
-		perror("malloc");
 		exit(98);
 	}
-	return (p);
+	return (pt);
 }
