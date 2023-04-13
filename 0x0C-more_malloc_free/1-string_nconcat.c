@@ -40,7 +40,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			pt[c] = s1[c];
 		else
 			pt[c] = s2[c - a];
-		b++;
 	}
 	pt[c] = '\0';
 
