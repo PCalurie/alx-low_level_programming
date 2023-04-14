@@ -6,13 +6,13 @@
  * @str: string to check
  * Return: the length of the string
  */
-int strlen(char *str)
+int _strlen(char *str)
 {
-	int n = 0;
+	int n;
 
-	for (; n != '\0'; n++)
+	for (n = 0; str[n] != '\0'; n++)
 		;
-	return (1);
+	return (n);
 }
 /**
  * _isdigit - checks if an element is a digit
@@ -21,11 +21,13 @@ int strlen(char *str)
  */
 int _isdigit(char *str)
 {
-	int n;
+	int m;
 
-	for (n = 0; str[n] < '0' || str[n] > '9'; n++)
+	for (m = 0; str[m] != '\0'; m++)
+	{
+		if (str[m] < '0' || str[m] > '9')
 		return (0);
-
+	}
 	return (1);
 }
 /**
@@ -44,48 +46,56 @@ void err(void)
  */
 int main(int argc, char *argv[])
 {
-	int _len1, _len2, _len, _carry, dgt1, dgt2, *rslt, pve = 0;
-	char *str1, *str2;
+	long int _len1, _len2, _len, _carry, num1, num2, i, j, *mul;
+	int pve = 0;
 
-	str1 = argv[1], str2 = argv[2];
-	if (argc != 3 || !_isdigit(str1) || !_isdigit(str2))
+	if (argc != 3)
 		err();
 
-	_len1 = strlen(str1);
-	_len2 = strlen(str2);
+	if (!_isdigit(argv[1]) || !_isdigit(argv[1]))
+		err();
+
+	_len1 = _strlen(argv[1]);
+	_len2 = _strlen(argv[2]);
 	_len = _len1 + _len2;
-	rslt = malloc(sizeof(int) * _len);
-	if (rslt == NULL)
+	mul = malloc(sizeof(long int) * (_len + 1));
+	if (mul == NULL)
 		return (1);
 
-	for (n = 0; n <= _len1 + _len2; n++)
-		rslt[n] = 0;
+	for (i = 0; i < _len; i++)
+		mul[i] = 0;
 
-	for (_len1 = _len1 - 1; _len >= 0; _len1--)
+	for (_len1 = _len1 - 1; i >= 0; i--)
 	{
-		dgt1 = str[_len1] - '0';
-		carry = 0;
+		num1 = argv[1][i] - '0';
+		_carry = 0;
 
-		for (_len2 = strlen(_len2) - 1; _len2 >= 0; _len2--)
+		for (j = _len2; j >= 0; j--)
 		{
-			dgt2 = str2[_len2] - '0';
-			carry += rslt[_len1 + _len2 + 1] + (dgt1 * dgt2);
-			rslt[_len1 + _len2 + 1] = carry % 10;
-			carry /= 10;
+			num2 = argv[2][j] - '0';
+			_carry += mul[i + j + 1] + (num1 * num2);
+			mul[i + j + 1] = _carry % 10;
+			_carry /= 10;
 		}
-		if (carry > 0)
-			rslt[_len1 + _len2 + 1] += carry;
+		if (_carry > 0)
+			mul[i + j + 1] += _carry;
 	}
-	for (n = 0; n < _len1 - 1; n--)
+	for (i = 0; i < _len; i++)
 	{
-		if (rslt[n])
+		if (mul[i])
 			pve = 1;
 
-		if (pve)
-			_putchar(rslt[n] = '0');
+		if (pve == 1)
+		{
+			_putchar('0');
+		}
+		else
+		{
+			for (i = _len - 1; i >= 0; i--)
+				_putchar(mul[i] + '0');
+		}
+		_putchar('\n');
 	}
-	if (!pve)
-		_putchar('0');
-	_putchar('\n');
+	free(mul);
 	return (0);
 }
