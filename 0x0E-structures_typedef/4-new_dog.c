@@ -10,27 +10,23 @@ int str_len(char *str)
 {
 	int i;
 
-	for (i = 0; str[i] != '\0'; i++)
-		return (i);
+	for (i = 0; str[i]; i++)
+		;
+	return (i);
 }
 /**
  * str_cpy - function copys a str
  * @src: source file
  * @dest: destination file
- * Return: pointer to dest
  */
-char str_cpy(char *src, char *dest)
+void str_cpy(char *src, char *dest)
 {
-	int _len, i;
+	int i;
 
-	for (_len = 0; src[_len] != '\0'; _len++)
-		;
-
-	for (i = 0; i < _len; i++)
+	for (i = 0; src[i]; i++)
 		dest[i] = src[i];
 
 	dest[i] = '\0';
-	return (dest);
 }
 /**
  * new_dog - this function creates a new do profile
@@ -51,20 +47,24 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (d == NULL)
 		return (NULL);
 
-	dog->name = malloc(sizeof(char) * _len1 + 1);
-	if (dog->name == NULL)
-		fee(dog);
+	d->name = malloc(sizeof(char) * (_len1 + 1));
+	if (d->name == NULL)
+	{
+		free(d);
 		return (NULL);
+	}
 
-	dog->owner = malloc(sizeof(char) * _len2 + 1);
-	if (dog->owner == NULL)
-		free(dog);
-		fee(dog->name);
+	d->owner = malloc(sizeof(char) * (_len2 + 1));
+	if (d->owner == NULL)
+	{
+		free(d);
+		free(d->name);
 		return (NULL);
+	}
 
-	str_cpy(dog->name, name);
-	str_cpy(dog->owner, owner);
-	dog->age = age;
+	str_cpy(name, d->name);
+	str_cpy(owner, d->owner);
+	d->age = age;
 
 	return (d);
 }
