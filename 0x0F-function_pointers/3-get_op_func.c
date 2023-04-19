@@ -1,13 +1,11 @@
-/*
- * File - get_op_func.c
- */
 #include "3-calc.h"
 /**
  * get_op_func - operates users request
- * @s: input string
- * Return: pointer to a func
+ * @s: input operator as an argument
+ * Return: pointer to a func of user's choice
+ * or otherwise NULL
  */
-int (*get_op_func(char *s)(int, int))
+int (*get_op_func(char *s))(int, int)
 {
 	op_t ops[] = {
 	{"+", op_add},
@@ -19,9 +17,9 @@ int (*get_op_func(char *s)(int, int))
 	};
 	int i;
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; ops[i].op != NULL; i++)
 	{
-		if (!strcmp(ops[i].op, s)
+		if (*ops[i].op == *s && s[i] == '\0')
 			return (ops[i].f);
 	}
 	return (NULL);
