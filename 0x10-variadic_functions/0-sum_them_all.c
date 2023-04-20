@@ -8,16 +8,16 @@
  */
 int sum_them_all(unsigned int n, ...)
 {
-	va_list gigits;
+	va_list digits;
 	unsigned int i;
 	int sum = 0;
 
-	va_start(digits, n)
+	va_start(digits, n);
 
 	for (i = 0; i < n; i++)
 		sum += va_arg(digits, int);
 
-	va_arg(digits);
+	va_end(digits);
 
 	return (sum);
 }
