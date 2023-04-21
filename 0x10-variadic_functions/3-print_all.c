@@ -19,13 +19,13 @@ void print_all(const char * const format, ...)
 		switch (format[i])
 		{
 			case 'c':
-				printf("%d", va_arg(all, int));
+				printf("%s%c", i == 0 ? "" : ", ", va_arg(all, int));
 				break;
 			case 'i':
-				printf("%d", va_arg(all, int));
+				printf("%s%d", i == 0 ? "" : ", ", va_arg(all, int));
 				break;
 			case 'f':
-				printf("%f", va_arg(all, double));
+				printf("%s%f", i == 0 ? "" : ", ", va_arg(all, double));
 				break;
 			case 's':
 				str = va_arg(all, char *);
@@ -33,19 +33,11 @@ void print_all(const char * const format, ...)
 				if (str == NULL)
 					str = "(nil)";
 
-				printf("%s", str);
+				printf("%s%s", i == 0 ? "" : ", ", str);
 				break;
 			default:
-				i++;
 				continue;
 		}
-		if (format[i + 1] && strchr("cifs", format[i]))
-		{
-			printf(", ");
-
-		i++;
-		}
-
 	}
 
 	va_end(all);
