@@ -23,7 +23,7 @@ list_t *add_node_end(list_t **head, const char *str)
 /* duplicate the string to be added as the value of the new node */
 	new_node->str = strdup(str);
 	if (new_node->str == NULL)
-		free(new_node)
+		free(new_node);
 			return (NULL);
 
 /* calculate the length of the string */
