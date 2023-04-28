@@ -11,15 +11,15 @@ size_t print_list(const list_t *h)
 {
 	/* initialize count to zero */
 	size_t count = 0;
-
+	const list_t *c_node = h
 	/* iterate through each node of the list */
-	for (; h != NULL; h = h->next)
+	for (; c_node != NULL; c_node = c_node->next)
 	{
 		/* print length and string value of the current node */
-		if (h->str == NULL)
+		if (c_node->str == NULL)
 			printf("[0] (nil)\n");
 		else
-			printf("[%d] %s\n", h->len, h->str);
+			printf("[%d] %s\n", c_node->len, c_node->str);
 
 		/* increment the count */
 		count++;
