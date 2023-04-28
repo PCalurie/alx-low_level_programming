@@ -1,9 +1,9 @@
 #include "lists.h"
-#include <stddef>
+#include <stddef.h>
 #include <stdlib.h>
 /**
- * free_list - function frees a list
- * @head: header node
+ * free_list - function frees a linked list
+ * @head: pointer to the beginning of the list
  */
 void free_list(list_t *head)
 {
@@ -11,6 +11,6 @@ void free_list(list_t *head)
 		return;
 
 	free_list(head->next);
-	free(head->string);
+	free(head->strring);
 	free(head);
 }
