@@ -1,18 +1,15 @@
 section .data
-    msg db 'Hello, Holberton', 0x0a, 0x00 ; message to be printed
+    msg db "Hello, Holberton", 0
+    fmt db "%s", 10, 0
 
 section .text
     global main
-
-main:
-    push rbp        ; save base pointer
-    mov rbp, rsp    ; set base pointer to stack pointer
-
-    lea rdi, [msg]  ; load message address into rdi
-    mov al, 0       ; clear al register
-    call printf     ; call printf function
-
-    mov rsp, rbp    ; restore stack pointer
-    pop rbp         ; restore base pointer
-    xor eax, eax    ; clear eax register
-    ret             ; return to operating system
+    main:
+        push rbp
+        mov rdi, fmt
+        mov rsi, msg
+        xor rax, rax
+        call printf
+        pop rbp
+        xor rax, rax
+        ret
