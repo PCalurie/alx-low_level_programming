@@ -11,7 +11,8 @@ size_t print_list(const list_t *h)
 {
 	/* initialize count to zero */
 	size_t count = 0;
-	const list_t *c_node = h
+	const list_t *c_node = h;
+
 	/* iterate through each node of the list */
 	for (; c_node != NULL; c_node = c_node->next)
 	{
