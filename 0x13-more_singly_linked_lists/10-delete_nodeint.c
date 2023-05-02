@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * delete_nodeint_at_index - deletes the node at index 
+ * delete_nodeint_at_index - deletes the node at index
  * @head: head of the list
  * @index: index of the node to delete
  * Return: 1 if it succeeded, -1 if it failed
