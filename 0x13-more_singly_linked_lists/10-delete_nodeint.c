@@ -3,35 +3,37 @@
 #include <stdio.h>
 
 /**
- * delete_nodeint_at_index - deletes the node at index
+ * delete_nodeint_at_index - deletes the node at index 
  * @head: head of the list
- * @index: emplacement of the node to delet
- * Return: pointer to head of list, or NULL if index is out of range
+ * @index: index of the node to delete
+ * Return: 1 if it succeeded, -1 if it failed
  */
-listint_t *delete_nodeint_at_index(listint_t **head, unsigned int index)
+int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
 	unsigned int i;
 	listint_t *current, *subsequent;
 
-	if (head == NULL || *head == NULL)
-		return (NULL);
+	if (*head == NULL)
+		return (-1);
 
-	current = *head;
 	if (index == 0)
 	{
-		*head = (*head)->next;
-		free(current);
-		return (*head);
+		subsequent = *head;
+		*head = subsequent->next;
+		free(subsequent);
+		return (1);
 	}
 
-	for (i = 0; current != NULL && i < index - 1; i++)
+	current = *head;
+	for (i = 0; i < index - 1 && current != NULL; i++)
 		current = current->next;
 
 	if (current == NULL || current->next == NULL)
-		return (NULL);
+		return (-1);
 
 	subsequent = current->next;
 	current->next = subsequent->next;
 	free(subsequent);
-	return (*head);
+
+	return (1);
 }
