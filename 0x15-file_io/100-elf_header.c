@@ -253,3 +253,56 @@ void close_elf(int fd)
 		exit(98);
 	}
 }
+/**
+ * main - main function
+ * @argv: arguments passed
+ * @argc: number of arguments
+ * Return: 0 on success
+ */
+int main(int argc, char **argv)
+{
+	int fd;
+	unsigned char buffer[EI_NIDENT];
+	Elf32_Ehdr *ehdr32;
+	Elf64_Ehdr *ehdr64;
+
+	if (argc != 2)
+	{
+		fprintf(stderr, "Usage: %s <ELF file>\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		perror("open");
+		exit(98);
+	}
+
+	if (read(fd, buffer, EI_NIDENT) != EI_NIDENT)
+	{
+		fprintf(stderr, "Failed to read ELF header\n");
+		close(fd);
+		exit(98);
+	}
+
+	if (!check_elf(buffer))
+	{
+		close(fd);
+		exi(98);
+	}
+
+	ehdr32 = (Elf32_Ehdr *)buffer;
+	ehdr64 = (Elf64_Ehdr *)buffer;
+
+	printf("ELF Header:\n");
+	print_elf_magic(ehdr32->e_ident);
+	print_class(ehdr32->e_ident);
+	print_data(ehdr32->e_ident);
+	print_version(ehdr32->e_ident);
+	print_osabi(ehdr32->e_ident);
+	print_type(ehdr32->e_type, ehdr32->e_ident);
+
+	close(fd);
+	return (0);
+}
