@@ -189,29 +189,27 @@ void print_osabi(unsigned char *e_ident)
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
-	const char *type_str;
-
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
-	
+
 	printf("  Type:                              ");
 
 	switch (e_type)
 	{
 		case ET_NONE:
-			type_str = "NONE (None)";
+			printf("NONE (None)");
 			break;
 		case ET_REL:
-			type_str = "REL (Relocatable file)";
+			printf("REL (Relocatable file)");
 			break;
 		case ET_EXEC:
-			type_str = "EXEC (Executable file)";
+			printf("EXEC (Executable file)");
 			break;
 		case ET_DYN:
-			type_str = "DYN (Shared object file)";
+			printf("DYN (Shared object file)");
 			break;
 		case ET_CORE:
-			type_str = "CORE (Core file)";
+			printf("CORE (Core file)");
 			break;
 		default:
 			printf("<unknown: %x>\n", e_type);
@@ -264,12 +262,11 @@ int main(int argc, char **argv)
 	int fd;
 	unsigned char buffer[EI_NIDENT];
 	Elf32_Ehdr *ehdr32;
-	Elf64_Ehdr *ehdr64;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: %s <ELF file>\n", argv[0]);
-		exit(EXIT_FAILURE);
+		exit(98);
 	}
 
 	fd = open(argv[1], O_RDONLY);
@@ -289,11 +286,10 @@ int main(int argc, char **argv)
 	if (!check_elf(buffer))
 	{
 		close(fd);
-		exi(98);
+		exit(98);
 	}
 
 	ehdr32 = (Elf32_Ehdr *)buffer;
-	ehdr64 = (Elf64_Ehdr *)buffer;
 
 	printf("ELF Header:\n");
 	print_elf_magic(ehdr32->e_ident);
