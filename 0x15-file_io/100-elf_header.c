@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /**
  * check_elf - Check if the given buffer is an ELF file
  * @ptr: A pointer to the buffer containing the ELF file header
@@ -15,45 +14,40 @@
  */
 int check_elf(char *ptr)
 {
-	int addr = (int)ptr[0];
-	char E = ptr[1];
-	char L = ptr[2];
-	char F = ptr[3];
-
-	if (addr == 127 && E == 'E' && L == 'L' && F == 'F')
-		return (1);
-
-	return (0);
+	return (ptr[0] == 0x7F && ptr[1] == 'E' && ptr[2] == 'L' && ptr[3] == 'F');
 }
+
 /**
  * print_magic - Prints the magic number of an ELF file header
  * @ptr: Pointer to the ELF file header
  *
  * This function prints the magic number of an ELF file header
- * in the same format
- * as the readelf command.
+ * in the same format as the readelf command.
  */
 void print_magic(char *ptr)
 {
 	int bytes;
 
 	printf("  Magic:  ");
-
 	for (bytes = 0; bytes < 16; bytes++)
 		printf(" %02x", ptr[bytes]);
-
 	printf("\n");
-
 }
+
 /**
- * check_sys - Prints the ELF system of the file
+ * print_sys - Prints the ELF system of the file
  * @ptr: Pointer to the ELF array
  *
  * Return: Nothing
  */
-void check_sysy(char *ptr)
+void print_sys(char *ptr)
 {
 	char sys = ptr[4] + '0';
+	char data = ptr[5];
+	int version = ptr[6];
+	char osabi = ptr[7];
+	char type;
+	int i;
 
 	if (sys == '0')
 		exit(98);
@@ -67,55 +61,17 @@ void check_sysy(char *ptr)
 	if (sys == '2')
 		printf("  Class:                             ELF64\n");
 
-	print_data(ptr);
-	print_version(ptr);
-	print_osabi(ptr);
-	print_type(ptr);
-	print_addr(ptr);
-}
-/**
- * print_data - prints the data encoding of an ELF file
- * @ptr: a pointer to the ELF header identification bytes
- *
- * Return: void
- */
-void print_data(char *ptr)
-{
-	char data = ptr[5];
 
 	printf("  Data:                              2's complement");
 	if (data == 1)
 		printf(", little endian\n");
-
-	if (data == 2)
+	else if (data == 2)
 		printf(", big endian\n");
-}
-/**
- * print_version - prints the ELF file version
- * @ptr: pointer to the ELF file identifier array
- *
- * Return: void
- */
-void print_version(char *ptr)
-{
-	int version = ptr[6];
 
 	printf("  Version:                           %d", version);
-
 	if (version == EV_CURRENT)
 		printf(" (current)");
-
 	printf("\n");
-}
-/**
- * print_osabi - prints the ELF file OS/ABI
- * @ptr: pointer to the ELF file identifier array
- *
- * Return: void
- */
-void print_osabi(char *ptr)
-{
-	char osabi = ptr[7];
 
 	printf("  OS/ABI:                            ");
 	if (osabi == 0)
@@ -128,22 +84,8 @@ void print_osabi(char *ptr)
 		printf("<unknown: %x>\n", osabi);
 
 	printf("  ABI Version:                       %d\n", ptr[8]);
-}
 
-/**
- * print_type - prints the ELF file type
- * @ptr: pointer to the ELF file identifier array
- *
- * Return: void
- */
-void print_type(char *ptr)
-{
-	char type = ptr[16];
-
-	if (ptr[5] == 1)
-		type = ptr[16];
-	else
-		type = ptr[17];
+	type = (data == 1) ? ptr[16] : ptr[17];
 
 	printf("  Type:                              ");
 	if (type == 0)
@@ -158,48 +100,29 @@ void print_type(char *ptr)
 		printf("CORE (Core file)\n");
 	else
 		printf("<unknown: %x>\n", type);
-}
-/**
- * print_addr - prints the ELF file entry point address
- * @ptr: pointer to the ELF file
- *
- * Return: void
- */
-void print_addr(char *ptr)
-{
-	int i;
-	int begin;
-	char sys;
 
 	printf("  Entry point address:               0x");
-
-	sys = ptr[4] + '0';
 	if (sys == '1')
 	{
-		begin = 26;
 		printf("80");
-		for (i = begin; i >= 22; i--)
+		for (i = 26; i >= 22; i--)
 		{
 			if (ptr[i] > 0)
 				printf("%x", ptr[i]);
 			else if (ptr[i] < 0)
 				printf("%x", 256 + ptr[i]);
+			if (ptr[7] == 6)
+				printf("00");
 		}
-		if (ptr[7] == 6)
-			printf("00");
 	}
-
-	if (sys == '2')
+	else if (sys == '2')
 	{
-		begin = 26;
-		for (i = begin; i > 23; i--)
+		for (i = 26; i > 23; i--)
 		{
 			if (ptr[i] >= 0)
 				printf("%02x", ptr[i]);
-
 			else if (ptr[i] < 0)
 				printf("%02x", 256 + ptr[i]);
-
 		}
 	}
 	printf("\n");
@@ -207,11 +130,12 @@ void print_addr(char *ptr)
 
 /**
  * main - main function
- * @argv: arguments passed
  * @argc: number of arguments
+ * @argv: arguments passed
+ *
  * Return: 0 on success
  */
-int main(int argc, char **argv[])
+int main(int argc, char *argv[])
 {
 	int fd, ret_read;
 	char ptr[27];
@@ -223,29 +147,27 @@ int main(int argc, char **argv[])
 	}
 
 	fd = open(argv[1], O_RDONLY);
-
 	if (fd < 0)
 	{
-		dprintf(STDERR_FILENO, "Err: file can not be open\n");
+		dprintf(STDERR_FILENO, "Err: file cannot be opened\n");
 		exit(98);
 	}
 
 	lseek(fd, 0, SEEK_SET);
 	ret_read = read(fd, ptr, 27);
-
 	if (ret_read == -1)
 	{
-		dprintf(STDERR_FILENO, "Err: The file can not be read\n");
+		dprintf(STDERR_FILENO, "Err: The file cannot be read\n");
 		exit(98);
 	}
 
 	if (!check_elf(ptr))
 	{
-		dprintf(STDERR_FILENO, "Err: It is not an ELF\n");
+		dprintf(STDERR_FILENO, "Err: It is not an ELF file\n");
 		exit(98);
 	}
 
-	check_sys(ptr);
+	print_sys(ptr);
 	close(fd);
 
 	return (0);
