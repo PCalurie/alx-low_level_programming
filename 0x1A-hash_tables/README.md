@@ -14,3 +14,6 @@ In C, hash tables are typically implemented using an array of linked lists or an
 
 ### 2. key -> index
 - a function that gives you the index of a key.
+
+### 3. >>> ht['betty'] = 'cool'
+- a function that adds an element to the hash table.
