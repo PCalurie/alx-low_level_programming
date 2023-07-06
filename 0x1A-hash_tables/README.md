@@ -23,3 +23,6 @@ In C, hash tables are typically implemented using an array of linked lists or an
 
 ### 5. >>> print(ht)
 - a function that prints a hash table.
+
+### 6. >>> del ht
+- a function that deletes a hash table.
