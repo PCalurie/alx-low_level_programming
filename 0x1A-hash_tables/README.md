@@ -20,3 +20,6 @@ In C, hash tables are typically implemented using an array of linked lists or an
 
 ### 4. >>> ht['betty']
 * a function that retrieves a value associated with a key.
+
+### 5. >>> print(ht)
+- a function that prints a hash table.
