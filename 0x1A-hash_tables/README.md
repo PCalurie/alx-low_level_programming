@@ -26,3 +26,5 @@ In C, hash tables are typically implemented using an array of linked lists or an
 
 ### 6. >>> del ht
 - a function that deletes a hash table.
+
+![python](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/5ebbea5dea5a575b38243d597604000715982925.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230706%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230706T160047Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=38d61f9abcc0a0e187a6897378676364d296101895272a06fa4447848e07e913)
