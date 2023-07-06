@@ -7,3 +7,7 @@ In C, hash tables are typically implemented using an array of linked lists or an
 - It's a function that creates a hash table.
  - Returns a pointer to the newly created hash table
  - If something went wrong, your function should return NULL
+
+### 1. djb2
+* a hash function implementing the djb2 algorithm.
+ - It uses a simple calculation to generate a new hash value based on the current character. The expression ((hash << 5) + hash) is equivalent to multiplying the hash value by 33, which is a commonly used multiplier in hash functions. The + c part adds the ASCII value of the current character to the hash calculation.
