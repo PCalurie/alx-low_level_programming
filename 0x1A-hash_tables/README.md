@@ -11,3 +11,6 @@ In C, hash tables are typically implemented using an array of linked lists or an
 ### 1. djb2
 * a hash function implementing the djb2 algorithm.
  - It uses a simple calculation to generate a new hash value based on the current character. The expression ((hash << 5) + hash) is equivalent to multiplying the hash value by 33, which is a commonly used multiplier in hash functions. The + c part adds the ASCII value of the current character to the hash calculation.
+
+### 2. key -> index
+- a function that gives you the index of a key.
