@@ -1,5 +1,4 @@
 #include "hash_tables.h"
-
 /**
  * hash_table_set - Adds an element to the linked list
  * @ht: The hash table parameter to add or update the key/value to
@@ -7,6 +6,7 @@
  * @value: The value associated with the key parameter
  * Return: 1 if it succeeded, 0 otherwise
  */
+
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
