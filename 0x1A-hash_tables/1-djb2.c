@@ -13,9 +13,6 @@ unsigned long int hash_djb2(const unsigned char *str)
 	hash = 5381;
 	while ((c = *str++))
 	{
-		/* multiplies the hash value by 33 and then
-		 * adds ASCII value of the current character
-		 * to the hash calculation */
 		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 	}
 	return (hash);
