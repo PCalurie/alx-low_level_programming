@@ -26,5 +26,8 @@ In C, hash tables are typically implemented using an array of linked lists or an
 
 ### 6. >>> del ht
 - a function that deletes a hash table.
-
-![python](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/5ebbea5dea5a575b38243d597604000715982925.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230706%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230706T160047Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=38d61f9abcc0a0e187a6897378676364d296101895272a06fa4447848e07e913)
+### 100. PHP STRUCTURES
+![python](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/253/php.png)
+- PHP uses a technique using a hash function where through employing a proccess called chainning.
+- This method simply stores all elements having the same hash in a linked list. When a key is looked up PHP will calculate the hash and then go through the linked list of “possible” values until it finds the matching entry.
+![python](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/5ebbea5dea5a575b38243d597604000715982925.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230710%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230710T075213Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=8beb2c92fcd4398aa921b406cbf44dd8fdc2b7e609881093e281e4b0844bfbbd)
